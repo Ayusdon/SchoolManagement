@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../../../styles/adminHod.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+</head>
+<body>
+    <div class="sidebar">
+        <a href="#home">Home</a>
+        <a href="#manage-staff">Manage Staff</a>
+        <a href="#add-staff">Add Staff</a>
+        <a href="#manage-student">Manage Student</a>
+        <a href="#add-student">Add Student</a>
+        <a href="#manage-course">Manage Course</a>
+        <a href="#add-course">Add Course</a>
+        <a href="#manage-subject">Manage Subject</a>
+        <a href="#add-subject">Add Subject</a>
+        <a href="#manage-session">Manage Session</a>
+        <a href="#add-session">Add Session</a>
+        <a href="#view-attendance">View Attendance</a>
+    </div>
+    <div class="main-content">
+        <h1>Admin Dashboard</h1>
+
+        <div class="metric-cards">
+            <div class="card">
+                <h2>Total Students</h2>
+                <p>122</p>
+                <button>More Info</button>
+            </div>
+            <div class="card">
+                <h2>Total Staff</h2>
+                <p>17</p>
+                <button>More Info</button>
+            </div>
+            <div class="card">
+                <h2>Total Courses</h2>
+                <p>11</p>
+                <button>More Info</button>
+            </div>
+            <div class="card">
+                <h2>Total Subjects</h2>
+                <p>22</p>
+                <button>More Info</button>
+            </div>
+        </div>
+
+        <div class="charts">
+            <div class="chart-container">
+                <h2>Student and Staff Chart</h2>
+                <canvas id="studentStaffChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h2>Total Subjects in Each Course</h2>
+                <canvas id="subjectsPerCourseChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h2>Total Students in Each Course</h2>
+                <canvas id="studentsPerCourseChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h2>Total Students in Each Subject</h2>
+                <canvas id="studentsPerSubjectChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample data (replace with your actual data)
+        const studentStaffData = {
+            labels: ['Students', 'Staff'],
+            datasets: [{
+                data: [122, 17],
+                backgroundColor: ['#FF6384', '#36A2EB'] 
+            }]
+        };
+
+        // Create charts using Chart.js (replace with your actual data and chart configurations)
+        const studentStaffChart = new Chart(document.getElementById('studentStaffChart'), {
+            type: 'pie',
+            data: studentStaffData
+        });
+
+        // ... create other charts using Chart.js 
+
+    </script>
+</body>
+</html>
