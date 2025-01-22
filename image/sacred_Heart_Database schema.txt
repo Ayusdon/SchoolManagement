@@ -1,0 +1,244 @@
+1.ClassModel
+-----------
+id (PK)
+class_name
+created_at
+updated_at
+
+
+2. CustomUser
+-----------
+id (PK)            (Inherited from `AbstractUser`)
+username
+password
+email
+first_name
+last_name
+user_type (choices: 1=HOD, 2=Staff, 3=Student)
+created_at
+updated_at
+
+
+3. AdminHOD
+--------
+id (PK)
+admin_id (FK -> CustomUser.id)
+created_at
+updated_at
+
+
+4. Staffs
+------
+id (PK)
+admin_id (FK -> CustomUser.id)
+profile_id (Unique)
+address
+contact_number
+profile_picture
+created_at
+updated_at
+
+
+
+5. Students
+--------
+id (PK)
+admin_id (FK -> CustomUser.id)
+profile_id (Unique)
+gender
+profile_picture
+address
+class_id (FK -> ClassModel.id)  --> Many Students in one ClassModel
+contact_number
+created_at
+updated_at
+
+6. Subjects
+--------
+id (PK)
+subject_name
+class_id (FK -> ClassModel.id)
+staff_id (FK -> CustomUser.id) --> Staff teaching the subject
+created_at
+updated_at
+
+
+
+
+7. Attendance
+----------
+id (PK)
+student_id (FK -> Students.id)
+attendance_date
+status (Boolean)
+remarks
+created_at
+updated_at
+
+
+8. AttendanceReport
+----------------
+id (PK)
+class_id (FK -> ClassModel.id)
+report_date
+total_present
+total_absent
+created_at
+updated_at
+
+
+
+9. LeaveReportStudent
+-------------------
+id (PK)
+student_id (FK -> Students.id)
+leave_start_date
+leave_end_date
+leave_message
+leave_status (Choices: Pending, Approved, Rejected)
+created_at
+updated_at
+
+
+
+
+10. LeaveReportStaff
+-----------------
+id (PK)
+staff_id (FK -> Staffs.id)
+leave_start_date
+leave_end_date
+leave_message
+leave_status (Choices: Pending, Approved, Rejected)
+created_at
+updated_at
+
+
+
+11. FeedBackStudent
+---------------
+id (PK)
+student_id (FK -> Students.id)
+feedback
+feedback_reply
+created_at
+updated_at
+
+
+
+
+13. FeedBackStaff
+--------------
+id (PK)
+staff_id (FK -> Staffs.id)
+feedback
+feedback_reply
+created_at
+updated_at
+
+
+
+14. NotificationStudent
+--------------------
+id (PK)
+student_id (FK -> Students.id)
+message
+created_at
+updated_at
+
+
+
+15. NotificationStaff
+------------------
+id (PK)
+staff_id (FK -> Staffs.id)
+message
+created_at
+updated_at
+
+
+16. Exam
+----
+id (PK)
+exam_name
+exam_date
+subject_id (FK -> Subjects.id)
+total_marks
+created_at
+updated_at
+
+
+17. ExamResult
+-----------
+id (PK)
+exam_id (FK -> Exam.id)
+student_id (FK -> Students.id)
+marks_obtained
+created_at
+updated_at
+
+
+
+18. Library
+-------
+id (PK)
+title
+author
+pdf_file
+uploaded_by (FK -> CustomUser.id)
+created_at
+updated_at
+
+
+
+19. Bill
+----
+id (PK)
+student_id (FK -> Students.id)
+fee_id (FK -> Fee.id)
+amount
+due_date
+paid (Boolean)
+payment_date
+bill_generated_at
+created_at
+updated_at
+
+
+
+20. Fee
+---
+id (PK)
+student_id (FK -> Students.id)
+amount
+due_date
+paid (Boolean)
+payment_date
+created_at
+updated_at
+
+
+21. Homork
+---
+id
+title
+description
+class_id  fk--> ClassModel.id
+due_date  
+created_at
+updated_at
+
+
+22. HomeWorkSubmission 
+id
+student   fk--->Student.id
+homework  fk--->Homework.id
+submission_data
+submission_file
+status_choice = [ (pending,submitted)
+status  Status of the submission
+craeted_at
+updated_at
+
+
+
